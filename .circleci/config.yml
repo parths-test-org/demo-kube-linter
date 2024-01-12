@@ -14,14 +14,14 @@ jobs:
       - run:
           name: Install Kubelinter
           command: |
-            # Install kube-linter.
-            curl -L https://github.com/stackrox/kube-linter/releases/download/v0.6.5/kube-linter-linux.tar.gz | tar -xz
-            sudo mv kube-linter /usr/local/bin/
+            # Install the latest version of kube-linter. You can also pin a specific version.
+            url -L https://github.com/stackrox/kube-linter/releases/latest/download/kube-linter-linux.tar.gz | tar -xz
+            sudo mv kube-linter /usr/local/bin/ | tee kube-linter.sarif
       - run:
           name: Analyze repository with kube-linter
           command: |
             # Please tweak this if you don't want to run analysis on the entire repo everytime.
-            kube-linter lint --format kube-linter.sarif
+            kube-linter lint --format sarif
       # Make sure you set the `DEEPSOURCE_DSN` env variable as a secret in your project.
       - run:
           name: Upload SARIF report to DeepSource
