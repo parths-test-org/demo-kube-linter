@@ -15,7 +15,7 @@ jobs:
           name: Install Kubelinter
           command: |
             # Install the latest version of kube-linter. You can also pin a specific version.
-            url -L https://github.com/stackrox/kube-linter/releases/latest/download/kube-linter-linux.tar.gz | tar -xz
+            curl -L https://github.com/stackrox/kube-linter/releases/latest/download/kube-linter-linux.tar.gz | tar -xz
             sudo mv kube-linter /usr/local/bin/
       - run:
           name: Analyze repository with kube-linter
