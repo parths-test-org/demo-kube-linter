@@ -21,7 +21,7 @@ jobs:
           name: Analyze repository with kube-linter
           command: |
             # Please tweak this if you don't want to run analysis on the entire repo everytime.
-            kube-linter lint --output kube-linter.sarif
+            kube-linter lint --format kube-linter.sarif
       # Make sure you set the `DEEPSOURCE_DSN` env variable as a secret in your project.
       - run:
           name: Upload SARIF report to DeepSource
